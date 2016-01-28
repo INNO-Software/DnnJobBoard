@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Module Settings</title>
+<link rel="stylesheet" type="text/css" href="http://dnnsoftware.com/Portals/_default/default.css">
+<link rel="stylesheet" type="text/css" href="innojobboard.css">
+<link rel="stylesheet" type="text/css" href="innojobboard-theme.css">
+
+
+</head>
+
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <h2>Job Board Settings</h2>
+      <div class="form">
+        <div class="form-group">
+          <div class="checkbox-x">
+            <label for="BootstrapCSS">Enable Bootstrap? </label>
+            <input id="BootstrapCSS" type="checkbox" aria-describedby="helpBootstrapCSS" checked />
+            <span id="helpBootstrapCSS" class="help-block">If checked, our modified version of Bootstrap CSS will load to give the job board module basic layout and style. Uncheck this box if you are using a DNN Theme that uses Bootstrap already.</span> </div>
+        </div>
+        <div class="form-group">
+          <div class="checkbox-x">
+            <label for="ApplicationForm">Enable Application Form? </label>
+            <input id="ApplicationForm" type="checkbox" aria-describedby="helpApplicationForm" checked />
+          </div>
+          <span id="helpApplicationForm" class="help-block">If checked, a simple application form will appear on the job details page and your users can submit their resumes to you directly through the module.</span> </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Which email address should receive the job applications?</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="For example: jobs@yourdomain.com">
+            <span id="exampleInputEmail1" class="help-block">If left blank, applications will be sent to the site administrator.</span>
+        </div>
+        
+        <div class="form-group">
+        	<label for="listingCustomMessage">Sidebar message for the listing page</label>
+            <img src="http://4.bp.blogspot.com/-0cHbjcIgA7s/TcO8YGBSzUI/AAAAAAAACOE/cMib9_WNyBg/s1600/TelerikRichEditor.png" alt="Message" class="img-responsive" />
+             <span class="help-block">This is a simple message that displays in the sidebar of the listing page.</span>
+        </div>
+        <div class="form-group">
+        	 <div class="checkbox-x">
+            <label for="DisplayFilters">Display Job Type Filters? </label>
+            <input id="DisplayFilters" type="checkbox" aria-describedby="helpDisplayFilters" checked />
+          </div>
+          <span id="helpDisplayFilters" class="help-block">If checked, the filters checkboxes will appear on the listing page that allows users to filter the listings by job types (full time, part time, etc).</span>
+            
+        </div>
+        
+        <div class="form-group form-group-lg text-center">
+          <button class="btn btn-primary btn-lg">Save Settings</button>
+          <small>or <a href="#">Cancel</a></small> </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <h2>Job Detail Fields</h2>
+      <p>The Job Details display on the listing and the detail view of the module. Typical job details would be <strong>location</strong>, <strong>compensation</strong>, or <strong>benefits</strong>. <a href="#">Create your first job detail &raquo;</a></p>
+<hr />
+
+      <div class="panel panel-default">
+       <div class="panel-heading">Your custom job detail fields</div>
+        <div class="panel-body">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-8">
+                <input type="text" class="form-control" Value="Posting ID" placeholder="For example: Compensation" />
+              </div>
+              <div class="col-sm-4 text-right">
+               <button type="button" class="btn btn-default">&darr;</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal"> &times; Delete </button>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-8">
+                <input type="text" class="form-control" Value="Benefits" placeholder="For example: Compensation" />
+              </div>
+              <div class="col-sm-4 text-right">
+               <button type="button" class="btn btn-default">&darr;</button>
+                <button type="button" class="btn btn-default">&uarr;</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal"> &times; Delete </button>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-8">
+                <input type="text" class="form-control" Value="Compensation" placeholder="For example: Compensation" />
+              </div>
+              <div class="col-sm-4 text-right">
+              <button type="button" class="btn btn-default">&darr;</button>
+                <button type="button" class="btn btn-default">&uarr;</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal"> &times; Delete </button>
+              </div>
+            </div>
+          </div>
+            <div class="form-group">
+            <div class="row">
+              <div class="col-sm-8">
+                <input type="text" class="form-control" Value="Location" placeholder="For example: Compensation" />
+              </div>
+              <div class="col-sm-4 text-right">
+              <button type="button" class="btn btn-default">&darr;</button>
+              <button type="button" class="btn btn-default">&uarr;</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal"> &times; Delete </button>
+              </div>
+            </div>
+          </div>
+            <div class="form-group">
+            <div class="row">
+              <div class="col-sm-8">
+                <input type="text" class="form-control" Value="Hours" placeholder="For example: Compensation" />
+              </div>
+              <div class="col-sm-4 text-right">
+              <button type="button" class="btn btn-default">&uarr;</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal"> &times; Delete </button>
+              </div>
+            </div>
+          </div>
+        </div>
+         <div class="panel-footer text-right"><a class="btn btn-success">+ Add a new field</a></div>
+      </div>
+             <div class="form-group form-group-lg text-center">
+          <button class="btn btn-primary btn-lg">Save Job Detail Fields</button>
+          <small>or <a href="#">Cancel</a></small> </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Are you sure that you want to delete this field?</h4>
+      </div>
+      <div class="modal-body"> <strong>Keep in mind!</strong> Deleting a field will remove it from <strong>all</strong> job postings. </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-link" data-dismiss="modal">Nevermind, I'll keep this field.</button>
+        <button type="button" class="btn btn-danger">I'm sure - delete it!</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+<script src="js/modal.js"></script>
+</body>
+</html>

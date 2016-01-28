@@ -1,29 +1,103 @@
 ﻿@model IEnumerable<Dnn.Modules.DnnJobBoard.Models.Item>
 
-<div id="Items-@Dnn.ModuleContext.ModuleId">
-    @if (Model == null || Model.Count() == 0)
-    {
-        <p>No jobs found.</p>
-    }
-    else
-    {
-        <ul class="tm_tl">
-            @foreach (var item in Model)
+
+    <div id="job-list" class="row">
+        <div class="col-sm-3 col-sm-offset-1 col-sm-push-8">
+            <div class="inno-jb-listing-custom-message">
+                <h3>What to know when applying</h3>
+                <p>We thank all applicants for their interest; however, only those selected for interviews will be contacted.</p>
+            </div>
+            <div class="well inno-jb-listing-filter">
+                <h4>Filter by Job Type</h4>
+                <hr />
+                <div class="checkbox-list">
+                    <ul id="dnn_ctr598_View_cblJobTypeFilters">
+                        <li>
+                            <input id="dnn_ctr598_View_cblJobTypeFilters_0" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$0" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$0\&#39;,\&#39;\&#39;)&#39;, 0)" value="Permanent Casual" />
+                            <label for="dnn_ctr598_View_cblJobTypeFilters_0">Permanent Casual</label>
+                        </li>
+                        <li>
+                            <input id="dnn_ctr598_View_cblJobTypeFilters_1" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$1" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$1\&#39;,\&#39;\&#39;)&#39;, 0)" value="Permanent Full Time" />
+                            <label for="dnn_ctr598_View_cblJobTypeFilters_1">Permanent Full Time</label>
+                        </li>
+                        <li>
+                            <input id="dnn_ctr598_View_cblJobTypeFilters_2" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$2" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$2\&#39;,\&#39;\&#39;)&#39;, 0)" value="Permanent Part Time" />
+                            <label for="dnn_ctr598_View_cblJobTypeFilters_2">Permanent Part Time</label>
+                        </li>
+                        <li>
+                            <input id="dnn_ctr598_View_cblJobTypeFilters_3" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$3" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$3\&#39;,\&#39;\&#39;)&#39;, 0)" value="Permanent Relief" />
+                            <label for="dnn_ctr598_View_cblJobTypeFilters_3">Permanent Relief</label>
+                        </li>
+                        <li>
+                            <input id="dnn_ctr598_View_cblJobTypeFilters_4" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$4" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$4\&#39;,\&#39;\&#39;)&#39;, 0)" value="Temporary Full Time" />
+                            <label for="dnn_ctr598_View_cblJobTypeFilters_4">Temporary Full Time</label>
+                        </li>
+                        <li>
+                            <input id="dnn_ctr598_View_cblJobTypeFilters_5" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$5" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$5\&#39;,\&#39;\&#39;)&#39;, 0)" value="Temporary Part Time" />
+                            <label for="dnn_ctr598_View_cblJobTypeFilters_5">Temporary Part Time</label>
+                        </li>
+                        <li>
+                            <input id="dnn_ctr598_View_cblJobTypeFilters_6" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$6" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$6\&#39;,\&#39;\&#39;)&#39;, 0)" value="Temporary Relief" />
+                            <label for="dnn_ctr598_View_cblJobTypeFilters_6">Temporary Relief</label>
+                        </li>
+                    </ul>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--<div id="Items-@Dnn.ModuleContext.ModuleId">-->
+        <div class="col-sm-8 col-sm-pull-4 inno-jb-listing-main">
+            @if (Model == null || Model.Count() == 0)
             {
-                <li class="tm_t">
-                    <h3>@item.JobTitle</h3>
-                    <div class="tm_td">@item.JobSummary</div>
-                    @{
-                        if (Dnn.ModuleContext.IsEditable)
-                        {
-                            <div>
-                                <a href="@Url.Action("Edit", "Item", new {ctl = "Edit", itemId = item.ItemId})">@Dnn.LocalizeString("EditItem")</a>
-                                <a href="@Url.Action("Delete", "Item", new {itemId = item.ItemId})">@Dnn.LocalizeString("DeleteItem")</a>
-                            </div>
-                        }
-                    }
-                </li>
+                <p>No jobs found.</p>
             }
-        </ul>
-    }
-</div>
+            else
+            {
+                <div class="panel panel-default">
+                    @foreach (var item in Model)
+                    {
+                        <div class="panel-heading">
+                            <h2 class="jobTitle h2">@item.JobTitle</h2>
+                            <h5>item.PostingDate</h5>
+                            @if (Dnn.ModuleContext.IsEditable)
+                            {
+                                <button type="button" class="btn btn-info"><a href="@Url.Action("Edit", "Item", new { ctl = "Edit", itemId = item.ItemId })">@Dnn.LocalizeString("EditItem")</a></button>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal"><a href="@Url.Action("Delete", "Item", new { itemId = item.ItemId })">@Dnn.LocalizeString("DeleteItem")</a></button>
+                            }
+                        </div>
+
+                        <div class="panel-body">
+                            <p>@item.JobSummary</p>
+                            <ul class="job-details-list">
+                                <li><strong>Job Type:</strong> @item.EmploymentTerm</li>
+                                <li><strong>Posting ID:</strong> @item.PostingNumber</li>
+                                <li><strong>Closing Date:</strong> @item.PostingCloseDate</li>
+                                <li><strong>Location:</strong> <span class="location">@item.Region</span></li>
+                                <li><strong>Compensation:</strong> @item.RateOfPay</li>
+                                <li><strong>Benefits:</strong> @item.Benefits</li>
+                            </ul>
+
+                            <p class="text-center"><a class="btn btn-primary btn-lg" href="details.html">View full job posting &raquo;</a></p>
+                        
+                        </div>
+                    }
+                </div>
+            }
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Are you sure that you want to delete this job posting?</h4>
+                        </div>
+                        <div class="modal-body">You can always <a href="#go-to-edit">change the status</a> of the posting instead.</div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default btn-link" data-dismiss="modal">Nevermind, I'll keep it.</button>
+                            <button type="button" class="btn btn-danger">I'm sure - delete it!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>

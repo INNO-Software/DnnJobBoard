@@ -18,7 +18,7 @@ using DotNetNuke.Entities.Content;
 
 namespace Dnn.Modules.DnnJobBoard.Models
 {
-    [TableName("DNN_JobBoard_Items")]
+    [TableName("DnnJobBoard_Items")]
     //setup the primary key for table
     //setup the primary key for table
     [PrimaryKey("ItemId", AutoIncrement = true)]
@@ -46,10 +46,10 @@ namespace Dnn.Modules.DnnJobBoard.Models
         ///<summary>
         /// The posting's open date
         ///</summary>
-        public DateTime PostingDate { get; set; }
+        public DateTime PostingDate { get; set; } = DateTime.UtcNow;
 
         ///<summary>
-        /// The posting's closed date, if left null it is considered "Open Until Filled"
+        /// The posting's close date, if left null it remains open unless otherwise updated
         ///</summary>
         public DateTime PostingCloseDate { get; set; }
 

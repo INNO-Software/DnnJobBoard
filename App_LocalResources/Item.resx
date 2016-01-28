@@ -151,15 +151,48 @@
     <value>Job Title</value>
   </data>
   <data name="lblPostingCloseDate.Text" xml:space="preserve">
-    <value>Job Posting Close Date</value>
+    <value>Posting Close Date</value>
   </data>
   <data name="lblPostingDate.Text" xml:space="preserve">
-    <value>Job Posting Date</value>
+    <value>Posting Date</value>
   </data>
-  <data name="lblPostingID.Text" xml:space="preserve">
-    <value>Job Posting ID</value>
+  <data name="lblPostingNumber.Text" xml:space="preserve">
+    <value>Posting Number</value>
   </data>
   <data name="Submit.Text" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="lblAdditionalInfo.Text" xml:space="preserve">
+    <value>Additional Info</value>
+  </data>
+  <data name="lblDepartment.Text" xml:space="preserve">
+    <value>Department</value>
+  </data>
+  <data name="lbllblJobAffiliation.Text" xml:space="preserve">
+    <value>Affiliation or Union</value>
+  </data>
+  <data name="lblNumberOfOpenings.Text" xml:space="preserve">
+    <value>Positions Open</value>
+  </data>
+  <data name="lblOffice.Text" xml:space="preserve">
+    <value>Office</value>
+  </data>
+  <data name="lblRateOfPay.Text" xml:space="preserve">
+    <value>Rate of Pay</value>
+  </data>
+  <data name="lblRegion.Text" xml:space="preserve">
+    <value>Region</value>
+  </data>
+  <data name="lblRequiredExperience.Text" xml:space="preserve">
+    <value>Required Experience</value>
+  </data>
+  <data name="lblRequiredQualifications.Text" xml:space="preserve">
+    <value>Required Qualifications</value>
+  </data>
+  <data name="lblShiftInfo.Text" xml:space="preserve">
+    <value>Shift Details</value>
+  </data>
+  <data name="lblWorkHours.Text" xml:space="preserve">
+    <value>Work Hours</value>
   </data>
 </root>

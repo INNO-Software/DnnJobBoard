@@ -1,0 +1,7 @@
+﻿
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}DnnJobBoard_Items]') AND type in (N'U'))
+BEGIN
+	DROP TABLE {databaseOwner}[{objectQualifier}DnnJobBoard_Items]
+END
+
+GO

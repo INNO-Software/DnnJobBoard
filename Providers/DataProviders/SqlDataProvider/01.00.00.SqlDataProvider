@@ -1,0 +1,49 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+/*** Create the DNN_JobBoard_Items table if it doesn't already exist ***/
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}DnnJobBoard_Items') AND type in (N'U'))
+
+BEGIN
+
+CREATE TABLE {databaseOwner}{objectQualifier}DnnJobBoard_Items(
+	[ItemId] [int] IDENTITY(1,1) NOT NULL,
+	[ModuleId] [int] NOT NULL,	
+	[PostingNumber] [varchar](50) NULL,
+	[PostingDate] [datetime] NOT NULL,
+	[PostingCloseDate] [datetime] NULL,
+	[JobTitle] [varchar](100) NOT NULL,
+	[JobSummary] [varchar](max) NOT NULL,
+	[Benefits] [varchar](max) NULL,
+	[EmploymentTerm] [varchar](50) NULL,
+	[RequiredQualifications] [varchar](max) NULL,
+	[RequiredExperience] [varchar](max) NULL,
+	[AdditionalInfo] [varchar](max) NULL,
+	[Affiliation] [varchar](50) NULL,
+	[Region] [varchar](500) NULL,
+	[Office] [varchar](50) NULL,
+	[Department] [varchar](50) NULL,
+	[ShiftInfo] [varchar](100) NULL,
+	[WorkHours] [varchar](100) NULL,
+	[RateOfPay] [varchar](100) NULL,
+	[NumberOfOpenings] [int] NOT NULL default 1,
+	[CreatedByUserId] [int],
+    [CreatedOnDate] [datetime],
+    [LastModifiedByUserId] [int],
+    [LastModifiedOnDate] [datetime],
+	CONSTRAINT [PK_DnnJobBoard_Items] PRIMARY KEY CLUSTERED (ItemId))
+
+END
+
+GO
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

@@ -1,0 +1,70 @@
+ul.job-details-list {
+	margin: 0 0 20px 0;
+	padding: 0;
+	
+	li {
+		display: inline-block;
+		margin-right: 20px;
+		vertical-align: top;
+		white-space: nowrap;
+	}
+}
+ 
+.checkbox-list ul {
+	margin: 0 0 0 10px;
+	padding: 0;
+	list-style: none;
+	
+	li {
+		margin: 0;
+		padding: 0;	
+		
+		input {
+			margin-right: 10px;
+		}
+			
+		label {
+			font-weight: normal;
+		}
+	}
+}
+
+
+// job details view
+
+.job-details {
+	fieldset {
+		.fieldset-row {
+			margin-bottom: 10px;
+			
+			&:last-child {
+				margin: 0;	
+			}
+		}
+	}
+}
+
+
+// add or edit
+
+.form-control-job-title {
+	display: block;
+	width: 100%;
+	border: none;
+	border-bottom: 2px dashed #999;
+	margin-bottom: 30px;
+	
+	&:focus {
+		box-shadow: none;
+		outline: none;
+		border-bottom: 2px dashed #333;
+	}
+}
+
+// module settings
+
+.job-application-form {
+	background: @gray-lighter;
+	padding: 15px 45px;
+}
+
