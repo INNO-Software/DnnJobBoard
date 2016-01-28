@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Dnn.Modules.DnnJobBoard.Models.Item>
+
+<div id="Items-@Dnn.ModuleContext.ModuleId">
+    @if (Model == null || Model.Count() == 0)
+    {
+        <p>No jobs found.</p>
+    }
+    else
+    {
+        <ul class="tm_tl">
+            @foreach (var item in Model)
+            {
+                <li class="tm_t">
+                    <h3>@item.JobTitle</h3>
+                    <div class="tm_td">@item.JobSummary</div>
+                    @{
+                        if (Dnn.ModuleContext.IsEditable)
+                        {
+                            <div>
+                                <a href="@Url.Action("Edit", "Item", new {ctl = "Edit", itemId = item.ItemId})">@Dnn.LocalizeString("EditItem")</a>
+                                <a href="@Url.Action("Delete", "Item", new {itemId = item.ItemId})">@Dnn.LocalizeString("DeleteItem")</a>
+                            </div>
+                        }
+                    }
+                </li>
+            }
+        </ul>
+    }
+</div>
