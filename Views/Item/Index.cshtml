@@ -1,6 +1,12 @@
 ﻿@model IEnumerable<Dnn.Modules.DnnJobBoard.Models.Item>
 
     @using DotNetNuke.Web.Mvc.Helpers
+
+    @using DotNetNuke.Web.Client.ClientResourceManagement
+    @{
+        ClientResourceManager.RegisterStyleSheet(Dnn.DnnPage, "~/DesktopModules/MVC/DnnJobBoard/css/innojobboard.css");
+    }	
+	
     @using DotNetNuke.Web.Client.ClientResourceManagement
     @{
         // here I check the module context to know if the module is editable or not
@@ -9,18 +15,15 @@
         //var hasAdminRights = this.User.IsInRole("Administrators");
         //if (hasAdminRights)
         //{
-            ClientResourceManager.RegisterScript(Dnn.DnnPage, "~/DesktopModules/MVC/DnnJobBoard/css/innojobboard-theme.css");
+            ClientResourceManager.RegisterStyleSheet(Dnn.DnnPage, "~/DesktopModules/MVC/DnnJobBoard/css/innojobboard-theme.css");
         //}
         //else
         //{
-        //   ClientResourceManager.RegisterScript(Dnn.DnnPage, "~/DesktopModules/MVC/INNO_Careers/css/innojobboard-application.css");
+        //   ClientResourceManager.RegisterStyleSheet(Dnn.DnnPage, "~/DesktopModules/MVC/INNO_Careers/css/innojobboard-application.css");
         //}
     }
 
-    @using DotNetNuke.Web.Client.ClientResourceManagement
-    @{
-        ClientResourceManager.RegisterScript(Dnn.DnnPage, "~/DesktopModules/MVC/DnnJobBoard/css/innojobboard.css");
-    }
+
 
     <div id="job-list" class="row">
         <div class="col-sm-3 col-sm-offset-1 col-sm-push-8">
@@ -32,7 +35,7 @@
                 <h4>Filter by Job Type</h4>
                 <hr />
                 <div class="checkbox-list">
-                    <ul id="dnn_ctr598_View_cblJobTypeFilters">
+                    <ul>
                         <li>
                             <input id="dnn_ctr598_View_cblJobTypeFilters_0" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$0" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$0\&#39;,\&#39;\&#39;)&#39;, 0)" value="Permanent Casual" />
                             <label for="dnn_ctr598_View_cblJobTypeFilters_0">Permanent Casual</label>
@@ -75,13 +78,14 @@
             }
             else
             {
-                <div class="panel panel-default">
+                <div class="jobboard-list">
                     @foreach (var item in Model)
                     {
+					<div class="panel panel-default">
                         <div class="panel-heading">
                             <h2 class="jobTitle h2">@item.JobTitle</h2>
-                            <button type="button" class="btn btn-info"><a href="@Url.Action("Details", "Item", new { ctl = "Details", itemId = item.ItemId })">@Dnn.LocalizeString("ViewItem")</a></button>
-                            <h5>item.PostingDate</h5>
+                           
+                            <h5>@item.PostingDate.ToString("MMMM d, yyyy")</h5>
                             @if (Dnn.ModuleContext.IsEditable)
                             {
                                 <button type="button" class="btn btn-info"><a href="@Url.Action("Edit", "Item", new { ctl = "Edit", itemId = item.ItemId })">@Dnn.LocalizeString("EditItem")</a></button>
@@ -90,7 +94,7 @@
                         </div>
 
                         <div class="panel-body">
-                            <p>@item.JobSummary</p>
+                            <p class="lead">@item.JobSummary</p>
                             <ul class="job-details-list">
                                 <li><strong>Job Type:</strong> @item.EmploymentTerm</li>
                                 <li><strong>Posting ID:</strong> @item.PostingNumber</li>
@@ -100,26 +104,14 @@
                                 <li><strong>Benefits:</strong> @item.Benefits</li>
                             </ul>
 
-                            <p class="text-center"><a class="btn btn-primary btn-lg" href="details.html">View full job posting &raquo;</a></p>
+                            <p class="text-center"><a class="btn btn-primary btn-lg" href="@Url.Action("Details", "Item", new { ctl = "Details", itemId = item.ItemId })">@Dnn.LocalizeString("ViewItem") &raquo;</a></p>
+							
+							
                         
                         </div>
+						</div>
                     }
                 </div>
             }
 
-            <!-- Modal -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Are you sure that you want to delete this job posting?</h4>
-                        </div>
-                        <div class="modal-body">You can always <a href="#go-to-edit">change the status</a> of the posting instead.</div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default btn-link" data-dismiss="modal">Nevermind, I'll keep it.</button>
-                            <button type="button" class="btn btn-danger">I'm sure - delete it!</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+         
