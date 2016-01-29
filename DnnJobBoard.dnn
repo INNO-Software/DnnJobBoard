@@ -54,7 +54,17 @@
                     <controlKey />
                     <controlSrc>Dnn.Modules.DnnJobBoard.Controllers/Item/Index.mvc</controlSrc>
                     <supportsPartialRendering>False</supportsPartialRendering>
-                    <controlTitle />
+                    <controlTitle>Job Listing</controlTitle>
+                    <controlType>View</controlType>
+                    <iconFile />
+                    <helpUrl />
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>Details</controlKey>
+                    <controlSrc>Dnn.Modules.DnnJobBoard.Controllers/Item/Details.mvc</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle>View Job</controlTitle>
                     <controlType>View</controlType>
                     <iconFile />
                     <helpUrl />
@@ -64,12 +74,12 @@
                     <controlKey>Edit</controlKey>
                     <controlSrc>Dnn.Modules.DnnJobBoard.Controllers/Item/Edit.mvc</controlSrc>
                     <supportsPartialRendering>False</supportsPartialRendering>
-                    <controlTitle>Edit Content</controlTitle>
+                    <controlTitle>Edit Job</controlTitle>
                     <controlType>Edit</controlType>
                     <iconFile />
                     <helpUrl />
                     <viewOrder>0</viewOrder>
-                    <supportsPopUps>True</supportsPopUps>
+                    <supportsPopUps>False</supportsPopUps>
                   </moduleControl>
                   <moduleControl>
                     <controlKey>Settings</controlKey>

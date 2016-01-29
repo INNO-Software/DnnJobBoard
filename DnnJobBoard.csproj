@@ -14,7 +14,7 @@
     <RootNamespace>DnnJobBoard</RootNamespace>
     <AssemblyName>DnnJobBoard</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -275,6 +275,9 @@
   <ItemGroup>
     <Content Include="Providers\DataProviders\SqlDataProvider\01.00.00.SqlDataProvider" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Item\Details.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -291,9 +294,9 @@
           <DevelopmentServerPort>51025</DevelopmentServerPort>
           <DevelopmentServerVPath>
           </DevelopmentServerVPath>
-          <IISUrl>http://localhost:51025/</IISUrl>
+          <IISUrl>http://dnndev.me/DesktopModules/MVC/DnnJobBoard</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://localhost:51025/</IISAppRootUrl>
+          <IISAppRootUrl>http://dnndev.me/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

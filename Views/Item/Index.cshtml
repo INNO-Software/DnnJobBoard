@@ -4,14 +4,13 @@
     @using DotNetNuke.Web.Client.ClientResourceManagement
     @{
         // here I check the module context to know if the module is editable or not
-        // fix required, doesn't check superusers properly --- Dnn.ModuleContext.IsSuperUser isn't exposed in MVC (only SPA token)
+        // fix required, doesn't check superusers properly --- Dnn.ModuleContext.IsSuperUser isn't exposed in MVC (only SPA token)       
+        // var hasAdminRights = (this.User.IsInRole("Administrators") || this.User.IsInRole("SuperUsers"));
         //var hasAdminRights = this.User.IsInRole("Administrators");
-        var hasAdminRights = (this.User.IsInRole("Administrators") || this.User.IsInRole("Superusers"));
-        if (hasAdminRights)
-        {
-
+        //if (hasAdminRights)
+        //{
             ClientResourceManager.RegisterScript(Dnn.DnnPage, "~/DesktopModules/MVC/DnnJobBoard/css/innojobboard-theme.css");
-        }
+        //}
         //else
         //{
         //   ClientResourceManager.RegisterScript(Dnn.DnnPage, "~/DesktopModules/MVC/INNO_Careers/css/innojobboard-application.css");
@@ -81,6 +80,7 @@
                     {
                         <div class="panel-heading">
                             <h2 class="jobTitle h2">@item.JobTitle</h2>
+                            <button type="button" class="btn btn-info"><a href="@Url.Action("Details", "Item", new { ctl = "Details", itemId = item.ItemId })">@Dnn.LocalizeString("ViewItem")</a></button>
                             <h5>item.PostingDate</h5>
                             @if (Dnn.ModuleContext.IsEditable)
                             {

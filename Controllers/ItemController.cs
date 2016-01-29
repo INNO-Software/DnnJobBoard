@@ -12,11 +12,18 @@ namespace Dnn.Modules.DnnJobBoard.Controllers
 {
     public class ItemController : DnnController
     {
+        [ModuleAction(ControlKey = "Edit", TitleKey = "Add Job")]
 
-        public ActionResult Delete(int itemId)
+        public ActionResult Index()
         {
-            ItemManager.Instance.DeleteItem(itemId, ModuleContext.ModuleId);
-            return RedirectToDefaultRoute();
+            var items = ItemManager.Instance.GetItems(ModuleContext.ModuleId);
+            return View(items);
+        }
+        
+        public ActionResult Details(Item item)
+        {
+            // load the existing item
+            return View(item);
         }
 
         public ActionResult Edit(int itemId = -1)
@@ -113,11 +120,11 @@ namespace Dnn.Modules.DnnJobBoard.Controllers
             return RedirectToDefaultRoute();
         }
 
-        [ModuleAction(ControlKey = "Edit", TitleKey = "AddItem")]
-        public ActionResult Index()
+        public ActionResult Delete(int itemId)
         {
-            var items = ItemManager.Instance.GetItems(ModuleContext.ModuleId);
-            return View(items);
+            ItemManager.Instance.DeleteItem(itemId, ModuleContext.ModuleId);
+            return RedirectToDefaultRoute();
         }
+
     }
 }

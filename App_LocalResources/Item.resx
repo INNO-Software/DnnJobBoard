@@ -195,4 +195,7 @@
   <data name="lblWorkHours.Text" xml:space="preserve">
     <value>Work Hours</value>
   </data>
+  <data name="ViewItem.Text" xml:space="preserve">
+    <value>View Details</value>
+  </data>
 </root>

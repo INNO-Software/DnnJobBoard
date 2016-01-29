@@ -2,7 +2,23 @@
   <files>
     <file>
       <path />
+      <name>add-edit.html</name>
+    </file>
+    <file>
+      <path />
+      <name>details.html</name>
+    </file>
+    <file>
+      <path />
       <name>License.txt</name>
+    </file>
+    <file>
+      <path />
+      <name>listing.html</name>
+    </file>
+    <file>
+      <path />
+      <name>module-settings.html</name>
     </file>
     <file>
       <path />
@@ -21,6 +37,170 @@
       <name>Settings.resx</name>
     </file>
     <file>
+      <path>css/</path>
+      <name>bootstrap.css</name>
+    </file>
+    <file>
+      <path>css/</path>
+      <name>innojobboard-application.css</name>
+    </file>
+    <file>
+      <path>css/</path>
+      <name>innojobboard-theme.css</name>
+    </file>
+    <file>
+      <path>css/</path>
+      <name>innojobboard.css</name>
+    </file>
+    <file>
+      <path>css/</path>
+      <name>media.css</name>
+    </file>
+    <file>
+      <path>css/</path>
+      <name>mixins.css</name>
+    </file>
+    <file>
+      <path>css/</path>
+      <name>normalize.css</name>
+    </file>
+    <file>
+      <path>css/</path>
+      <name>print.css</name>
+    </file>
+    <file>
+      <path>css/</path>
+      <name>responsive-embed.css</name>
+    </file>
+    <file>
+      <path>css/</path>
+      <name>theme.css</name>
+    </file>
+    <file>
+      <path>css/</path>
+      <name>variables.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>alerts.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>background-variant.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>border-radius.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>buttons.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>center-block.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>clearfix.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>forms.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>gradients.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>grid-framework.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>grid.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>hide-text.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>image.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>labels.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>list-group.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>nav-divider.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>nav-vertical-align.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>opacity.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>pagination.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>panels.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>progress-bar.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>reset-filter.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>reset-text.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>resize.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>responsive-visibility.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>size.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>tab-focus.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>table-row.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>text-emphasis.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>text-overflow.css</name>
+    </file>
+    <file>
+      <path>css/mixins/</path>
+      <name>vendor-prefixes.css</name>
+    </file>
+    <file>
       <path>Documentation/</path>
       <name>Documentation.css</name>
     </file>
@@ -29,8 +209,20 @@
       <name>Documentation.html</name>
     </file>
     <file>
+      <path>js/</path>
+      <name>innojobboard.js</name>
+    </file>
+    <file>
+      <path>js/</path>
+      <name>modal.js</name>
+    </file>
+    <file>
       <path>Views/</path>
       <name>_ViewStart.cshtml</name>
+    </file>
+    <file>
+      <path>Views/Item/</path>
+      <name>Details.cshtml</name>
     </file>
     <file>
       <path>Views/Item/</path>
