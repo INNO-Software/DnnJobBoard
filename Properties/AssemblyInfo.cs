@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("DnnJobBoard")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("The DnnJobBoard is an open source DotNetNuke module built by INNO Software Inc.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("INNO Software Inc.")]
 [assembly: AssemblyProduct("DnnJobBoard")]
 [assembly: AssemblyCopyright("Copyright © 2015")]
 [assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+[assembly: AssemblyCulture("en-US")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
@@ -30,5 +30,5 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("00.00.01.*")]
-[assembly: AssemblyFileVersion("00.00.01.*")]
+[assembly: AssemblyVersion("01.00.00.00")]
+[assembly: AssemblyFileVersion("01.00.00.00")]

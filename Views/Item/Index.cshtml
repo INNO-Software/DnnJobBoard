@@ -1,5 +1,27 @@
 ﻿@model IEnumerable<Dnn.Modules.DnnJobBoard.Models.Item>
 
+    @using DotNetNuke.Web.Mvc.Helpers
+    @using DotNetNuke.Web.Client.ClientResourceManagement
+    @{
+        // here I check the module context to know if the module is editable or not
+        // fix required, doesn't check superusers properly --- Dnn.ModuleContext.IsSuperUser isn't exposed in MVC (only SPA token)
+        //var hasAdminRights = this.User.IsInRole("Administrators");
+        var hasAdminRights = (this.User.IsInRole("Administrators") || this.User.IsInRole("Superusers"));
+        if (hasAdminRights)
+        {
+
+            ClientResourceManager.RegisterScript(Dnn.DnnPage, "~/DesktopModules/MVC/DnnJobBoard/css/innojobboard-theme.css");
+        }
+        //else
+        //{
+        //   ClientResourceManager.RegisterScript(Dnn.DnnPage, "~/DesktopModules/MVC/INNO_Careers/css/innojobboard-application.css");
+        //}
+    }
+
+    @using DotNetNuke.Web.Client.ClientResourceManagement
+    @{
+        ClientResourceManager.RegisterScript(Dnn.DnnPage, "~/DesktopModules/MVC/DnnJobBoard/css/innojobboard.css");
+    }
 
     <div id="job-list" class="row">
         <div class="col-sm-3 col-sm-offset-1 col-sm-push-8">

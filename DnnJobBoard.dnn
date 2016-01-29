@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="DnnJobBoard" type="Module" version="00.00.01">
+    <package name="DnnJobBoard" type="Module" version="01.00.00">
       <friendlyName>DnnJobBoard</friendlyName>
       <description>DNN DnnJobBoard module</description>
       <iconFile>~/Icons/Sigma/Software_32X32_Standard.png</iconFile>
@@ -21,13 +21,13 @@
             <basePath>DesktopModules\MVC\DnnJobBoard</basePath>
             <script type="Install">
               <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>00.00.01.SqlDataProvider</name>
-              <version>00.00.01</version>
+              <name>01.00.00.SqlDataProvider</name>
+              <version>01.00.00</version>
             </script>
             <script type="UnInstall">
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>Uninstall.SqlDataProvider</name>
-              <version>00.00.01</version>
+              <version>01.00.00</version>
             </script>
           </scripts>
         </component>
