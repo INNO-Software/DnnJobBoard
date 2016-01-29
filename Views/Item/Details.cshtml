@@ -1,6 +1,107 @@
 ﻿@model Dnn.Modules.DnnJobBoard.Models.Item
 
+@using DotNetNuke.Web.Mvc.Helpers
+@using DotNetNuke.Web.Client.ClientResourceManagement
+@{
+    // here I check the module context to know if the module is editable or not
+    // fix required, doesn't check superusers properly --- Dnn.ModuleContext.IsSuperUser isn't exposed in MVC (only SPA token)
+    // var hasAdminRights = (this.User.IsInRole("Administrators") || this.User.IsInRole("SuperUsers"));
+    //var hasAdminRights = this.User.IsInRole("Administrators");
+    //if (hasAdminRights)
+    //{
+    ClientResourceManager.RegisterScript(Dnn.DnnPage, "~/DesktopModules/MVC/DnnJobBoard/css/innojobboard-theme.css");
+    //}
+    //else
+    //{
+    //   ClientResourceManager.RegisterScript(Dnn.DnnPage, "~/DesktopModules/MVC/INNO_Careers/css/innojobboard-application.css");
+    //}
+}
+
+@using DotNetNuke.Web.Client.ClientResourceManagement
+@{
+    ClientResourceManager.RegisterScript(Dnn.DnnPage, "~/DesktopModules/MVC/DnnJobBoard/css/innojobboard.css");
+}
+
+<p>Aaron, this one under here is the real-deal. You can use it where required.</p>
+<a href="@Url.Action("Index")">@Dnn.LocalizeString("ReturnToList")</a>
+
+
+
 <div id="Item-@Dnn.ModuleContext.ModuleId">
+        <div class="row">
+            <div class="col-sm-12">
+                <p><small><a href="listing.html">&lsaquo; View all job postings</a></small></p>
+                @Html.DisplayTextFor(model => model.JobTitle)
+                <h1>
+                    Licensed Practical Nurse
+                    <button class="btn btn-info">&#9998; Edit</button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">&times; Delete</button>
+                </h1>
+                <h5 class="text-uppercase">Posted Sep 18, 2015</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-7 inno-jb-detail-main">
+                <div class="job-summary">
+                    <p class="lead">Promotes health and healing by functioning as a member of the care team to provide optimum care for convalescent, acutely/chronically ill, home care and long-term care clients/patients/residents.</p>
+                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                    <ul>
+                        <li>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</li>
+                        <li>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</li>
+                        <li>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</li>
+                        <li>Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</li>
+                    </ul>
+                </div>
+                <div class="inno-careers-experience">
+                    <h4>Experience:</h4>
+                    <p>Previous: No previous experience.</p>
+                </div>
+                <div class="inno-careers-qualifications">
+                    <h4>Qualifications:</h4>
+                    <p>
+                        Required Qualifications<br />
+                        Practical Nursing Diploma<br />
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-4 col-sm-offset-1 inno-jb-detail-sidebar">
+                <div class="job-details panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Job Details</h3>
+                    </div>
+                    <div class="panel-body">
+                        <fieldset>
+                            <div class="fieldset-row">
+                                <label>Job Type:</label>
+                                <span>Permanent Full Time</span>
+                            </div>
+                            <div class="fieldset-row">
+                                <label>Posting ID:</label>
+                                <span>GO-00253411</span>
+                            </div>
+                            <div class="fieldset-row">
+                                <label>Closing Date:</label>
+                                <span>Sep 21, 2015</span>
+                            </div>
+                            <div class="fieldset-row">
+                                <label>Location:</label>
+                                <span>Prince Albert</span>
+                            </div>
+                            <div class="fieldset-row">
+                                <label>Compensation:</label>
+                                <span>$36,000/year</span>
+                            </div>
+                            <div class="fieldset-row">
+                                <label>Benefits:</label>
+                                <span>Dental, Vision</span>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <div class="dnnForm dnnEditBasicSettings" id="dnnEditBasicSettings">
         <div class="dnnFormExpandContent dnnRight "><a href="#">@Dnn.LocalizeString("ExpandAll")</a></div>
@@ -84,6 +185,7 @@
             @Html.HiddenFor(m => m.ModuleId)
         </fieldset>
     </div>
+
     <button type="submit" class="dnnPrimaryAction">@Dnn.LocalizeString("Submit")</button>
     <a id="cancelEdit" href="#" class="dnnSecondaryAction">@Dnn.LocalizeString("Cancel")</a>
 </div>

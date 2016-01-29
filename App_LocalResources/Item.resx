@@ -198,4 +198,7 @@
   <data name="ViewItem.Text" xml:space="preserve">
     <value>View Details</value>
   </data>
+  <data name="ReturnToList.Text" xml:space="preserve">
+    <value>&lt; View all Job Postings</value>
+  </data>
 </root>

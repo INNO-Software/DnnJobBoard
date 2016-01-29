@@ -13,19 +13,13 @@ namespace Dnn.Modules.DnnJobBoard.Controllers
     public class ItemController : DnnController
     {
         [ModuleAction(ControlKey = "Edit", TitleKey = "Add Job")]
-
+      
         public ActionResult Index()
         {
             var items = ItemManager.Instance.GetItems(ModuleContext.ModuleId);
             return View(items);
         }
         
-        public ActionResult Details(Item item)
-        {
-            // load the existing item
-            return View(item);
-        }
-
         public ActionResult Edit(int itemId = -1)
         {
             DotNetNuke.Framework.JavaScriptLibraries.JavaScript.RequestRegistration(CommonJs.DnnPlugins);
@@ -43,9 +37,32 @@ namespace Dnn.Modules.DnnJobBoard.Controllers
             return View(item);
         }
 
+        public ActionResult Details(int itemId = -1)
+        {
+            // register the DnnPlugins JS into the control
+            DotNetNuke.Framework.JavaScriptLibraries.JavaScript.RequestRegistration(CommonJs.DnnPlugins);
+            
+            // get DNN users for this portal
+            var userlist = UserController.GetUsers(PortalSettings.PortalId);
+            // for every user in the portal populate a selectlistitem 
+            var users = from user in userlist.Cast<UserInfo>().ToList()
+                        select new SelectListItem { Text = user.DisplayName, Value = user.UserID.ToString() };
+            // store the selectlistitem full of users in a users viewbag
+            ViewBag.Users = users;
+
+            // if the item is new then generate it, otherwise load it from the system
+            var item = (itemId == -1)
+                 ? new Item { ModuleId = ModuleContext.ModuleId }
+                 : ItemManager.Instance.GetItem(itemId, ModuleContext.ModuleId);
+
+            // return the item we are viewing
+            return View(item);
+        }
+
         [HttpPost]
         public ActionResult Edit(Item item)
         {
+            // is this a non-existent item
             if (item.ItemId == -1 || item.ItemId == 0)
             {
                 // which user added this record
@@ -60,9 +77,8 @@ namespace Dnn.Modules.DnnJobBoard.Controllers
                 // submit the item for creation
                 ItemManager.Instance.CreateItem(item);
             }
-            else
-            {
-                // load the existing item
+            else // load an existing item
+            {                
                 var existingItem = ItemManager.Instance.GetItem(item.ItemId, item.ModuleId);
 
                 // the module id to allow filtering data by module instance
