@@ -4,13 +4,20 @@
 
 @import "modals.less";
 @import "close.less";
-@import "buttons.less";
 
-.jobboard-view-details {
+a.jobboard-view-details {
 	display: inline-block;
-	.btn;
-	.btn-lg;
-	border-color: @gray-dark;
+	font-size: @font-size-large;
+	padding: 7px 21px;
+	background-color: @gray-dark;
+	color: #fff;
+	border-radius: @border-radius-base;
+	text-decoration: none;
+	
+	&:hover {
+		background-color: @gray;
+		color: #fff;
+	}
 }
 
 .filter-group {
