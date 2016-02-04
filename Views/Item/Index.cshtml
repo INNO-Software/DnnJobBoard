@@ -27,45 +27,43 @@
 
     <div id="job-list" class="row">
         <div class="col-sm-3 col-sm-offset-1 col-sm-push-8">
-            <div class="inno-jb-listing-custom-message">
-                <h3>What to know when applying</h3>
-                <p>We thank all applicants for their interest; however, only those selected for interviews will be contacted.</p>
-            </div>
+          
             <div class="well inno-jb-listing-filter">
                 <h4>Filter by Job Type</h4>
                 <hr />
-                <div class="checkbox-list">
-                    <ul>
-                        <li>
+                <div class="filter-checkbox-list">
+                   
+                        <div class="filter-group">
                             <input id="dnn_ctr598_View_cblJobTypeFilters_0" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$0" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$0\&#39;,\&#39;\&#39;)&#39;, 0)" value="Permanent Casual" />
                             <label for="dnn_ctr598_View_cblJobTypeFilters_0">Permanent Casual</label>
-                        </li>
-                        <li>
+                        </div>
+                       <div class="filter-group">
                             <input id="dnn_ctr598_View_cblJobTypeFilters_1" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$1" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$1\&#39;,\&#39;\&#39;)&#39;, 0)" value="Permanent Full Time" />
                             <label for="dnn_ctr598_View_cblJobTypeFilters_1">Permanent Full Time</label>
-                        </li>
-                        <li>
+                        </div>
+                       <div class="filter-group">
                             <input id="dnn_ctr598_View_cblJobTypeFilters_2" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$2" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$2\&#39;,\&#39;\&#39;)&#39;, 0)" value="Permanent Part Time" />
                             <label for="dnn_ctr598_View_cblJobTypeFilters_2">Permanent Part Time</label>
-                        </li>
-                        <li>
+                       </div>
+                       <div class="filter-group">
                             <input id="dnn_ctr598_View_cblJobTypeFilters_3" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$3" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$3\&#39;,\&#39;\&#39;)&#39;, 0)" value="Permanent Relief" />
                             <label for="dnn_ctr598_View_cblJobTypeFilters_3">Permanent Relief</label>
-                        </li>
-                        <li>
+                        </div>
+                       <div class="filter-group">
                             <input id="dnn_ctr598_View_cblJobTypeFilters_4" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$4" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$4\&#39;,\&#39;\&#39;)&#39;, 0)" value="Temporary Full Time" />
                             <label for="dnn_ctr598_View_cblJobTypeFilters_4">Temporary Full Time</label>
-                        </li>
-                        <li>
+                       </div>
+                       <div class="filter-group">
                             <input id="dnn_ctr598_View_cblJobTypeFilters_5" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$5" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$5\&#39;,\&#39;\&#39;)&#39;, 0)" value="Temporary Part Time" />
                             <label for="dnn_ctr598_View_cblJobTypeFilters_5">Temporary Part Time</label>
-                        </li>
-                        <li>
+                        </div>
+                       <div class="filter-group">
                             <input id="dnn_ctr598_View_cblJobTypeFilters_6" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$6" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$6\&#39;,\&#39;\&#39;)&#39;, 0)" value="Temporary Relief" />
                             <label for="dnn_ctr598_View_cblJobTypeFilters_6">Temporary Relief</label>
-                        </li>
-                    </ul>
-                    </ul>
+                       </div>
+                    
+                  
+                   
                 </div>
             </div>
         </div>
@@ -104,7 +102,7 @@
                                 <li><strong>Benefits:</strong> @item.Benefits</li>
                             </ul>
 
-                            <p class="text-center"><a class="btn btn-primary btn-lg" href="@Url.Action("Details", "Item", new { ctl = "Details", itemId = item.ItemId })">@Dnn.LocalizeString("ViewItem") &raquo;</a></p>
+                            <p class="text-center"><a class="jobboard-view-details" href="@Url.Action("Details", "Item", new { ctl = "Details", itemId = item.ItemId })">@Dnn.LocalizeString("ViewItem") &raquo;</a></p>
 							
 							
                         
