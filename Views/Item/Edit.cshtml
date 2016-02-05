@@ -148,7 +148,7 @@
                             @Html.TextBoxFor(m => Model.Department, new { id = "jobDepartment", @class = "form-control" })
                         </div>
                         <div class="form-group">
-                            <label class="control-label" for="jobAffiliation">@Dnn.LocalizeString("lblJobAffiliation") - this label is broken (no localized string?)</label>
+                            <label class="control-label" for="jobAffiliation">@Dnn.LocalizeString("lblJobAffiliation")</label>
                             @Html.TextBoxFor(m => Model.Affiliation, new { id = "jobAffiliation", @class = "form-control" })
                         </div>
                         <div class="form-group">
@@ -172,9 +172,31 @@
                 <button class="btn btn-primary btn-lg">@Dnn.LocalizeString("Submit")</button>
               
 
-			  <small>or <a href="#" class="btn btn-link">@Dnn.LocalizeString("Cancel")</a> <button type="button" class="btn btn-danger pull-right">&times; Delete This Posting</button></small>
+			  <small>or 
+                <a href="@Url.Action("Index")" class="btn btn-link">@Dnn.LocalizeString("Cancel")</a>
+
+                <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#myModal">
+                    <a href="javascript:confirmDelete(m => Model.ItemId)">&times; @Dnn.LocalizeString("DeleteItem")</a>
+                </button></small>
             </div>
         </div>
     </div>
 
 </div>
+
+
+
+@section ViewRoot
+            {
+    @{ Html.RenderPartial("/DesktopModules/MVC/DnnJobBoard/Views/Shared/_RenderJobs.Modal.cshtml"); }
+}
+
+@section ViewScripts
+            {
+    @using DotNetNuke.Web.Client.ClientResourceManagement
+    @{
+        ClientResourceManager.RegisterScript(Dnn.DnnPage, "~/bundles/jqueryval");
+        ClientResourceManager.RegisterScript(Dnn.DnnPage, "~/DesktopModules/MVC/DnnJobBoard/Views/Shared/_RenderJobs.js.cshtml");
+
+    }
+}

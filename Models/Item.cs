@@ -52,7 +52,7 @@ namespace Dnn.Modules.DnnJobBoard.Models
         /// The posting's close date, if left null it remains open unless otherwise updated
         ///</summary>
         public Nullable<DateTime> PostingCloseDate { get; set; }
-
+    
         ///<summary>
         /// The title of the position 
         ///</summary>
@@ -149,4 +149,5 @@ namespace Dnn.Modules.DnnJobBoard.Models
         public DateTime LastModifiedOnDate { get; set; } = DateTime.UtcNow;
 
     }
+
 }

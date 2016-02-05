@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddItem.Text" xml:space="preserve">
-    <value>Add New Career</value>
+    <value>Add New Job</value>
   </data>
   <data name="Cancel.Text" xml:space="preserve">
     <value>Cancel</value>
@@ -127,7 +127,7 @@
     <value>Collapse All</value>
   </data>
   <data name="DeleteItem.Text" xml:space="preserve">
-    <value>Delete</value>
+    <value>Delete This Posting</value>
   </data>
   <data name="EditItem.Text" xml:space="preserve">
     <value>Edit</value>
@@ -168,7 +168,7 @@
   <data name="lblDepartment.Text" xml:space="preserve">
     <value>Department</value>
   </data>
-  <data name="lbllblJobAffiliation.Text" xml:space="preserve">
+  <data name="lblJobAffiliation.Text" xml:space="preserve">
     <value>Affiliation or Union</value>
   </data>
   <data name="lblNumberOfOpenings.Text" xml:space="preserve">
@@ -199,6 +199,15 @@
     <value>View Details</value>
   </data>
   <data name="ReturnToList.Text" xml:space="preserve">
-    <value>&lt; View all Job Postings</value>
+    <value>View all Job Postings</value>
+  </data>
+  <data name="DeleteItemWarning.Text" xml:space="preserve">
+    <value>Are you certain you want to delete this job?</value>
+  </data>
+  <data name="NoCloseDate.Text" xml:space="preserve">
+    <value>Until Filled</value>
+  </data>
+  <data name="StandardDateFormat.Text" xml:space="preserve">
+    <value>MMMM dd, yyyy</value>
   </data>
 </root>

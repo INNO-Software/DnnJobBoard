@@ -12,7 +12,7 @@ namespace Dnn.Modules.DnnJobBoard.Controllers
 {
     public class ItemController : DnnController
     {
-        [ModuleAction(ControlKey = "Edit", TitleKey = "Add Job")]
+        [ModuleAction(ControlKey = "Edit", TitleKey = "AddItem")]
       
         public ActionResult Index()
         {
@@ -39,11 +39,9 @@ namespace Dnn.Modules.DnnJobBoard.Controllers
 
         public ActionResult Details(int itemId = -1)
         {
-
             if (itemId == -1 | itemId == 0)
             {
-                // somehow this was called but the id passed can't be for a valid record
-                // log an error
+                // the user is trying to delete a record they are creating, just disregard the request                
             }
             else
             {
@@ -75,6 +73,7 @@ namespace Dnn.Modules.DnnJobBoard.Controllers
         [HttpPost]
         public ActionResult Edit(Item job)
         {
+            
             // is this a non-existent item
             if (job.ItemId == -1 || job.ItemId == 0)
             {
@@ -86,10 +85,13 @@ namespace Dnn.Modules.DnnJobBoard.Controllers
                 job.CreatedOnDate = DateTime.UtcNow;
                 // the modified date is the same as the creation date
                 job.LastModifiedOnDate = DateTime.UtcNow;
-                
+                // the module id to allow filtering data by module instance
+                job.ModuleId = job.ModuleId;
+            
                 // submit the item for creation
                 ItemManager.Instance.CreateItem(job);
             }
+
             else // load an existing item
             {
                 var existingItem = ItemManager.Instance.GetItem(job.ItemId, job.ModuleId);                
@@ -110,10 +112,11 @@ namespace Dnn.Modules.DnnJobBoard.Controllers
                 existingItem.PostingDate = job.PostingDate;
 
                 // when is the job posting closed 
-                if (job.PostingCloseDate != null && job.PostingCloseDate < DateTime.Now.AddYears(-200))
+                if (job.PostingCloseDate != null)
                 {
                     existingItem.PostingCloseDate = job.PostingCloseDate;
                 } 
+
                 // job title
                 existingItem.JobTitle = job.JobTitle;
                 // job summary
