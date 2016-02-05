@@ -73,26 +73,26 @@ namespace Dnn.Modules.DnnJobBoard.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Item item)
+        public ActionResult Edit(Item job)
         {
             // is this a non-existent item
-            if (item.ItemId == -1 || item.ItemId == 0)
+            if (job.ItemId == -1 || job.ItemId == 0)
             {
                 // which user added this record
-                item.CreatedByUserId = User.UserID;
+                job.CreatedByUserId = User.UserID;
                 // the user that modified the record is one and the same as he/she who created this record
-                item.LastModifiedByUserId = User.UserID;
+                job.LastModifiedByUserId = User.UserID;
                 // set record creation date to now
-                item.CreatedOnDate = DateTime.UtcNow;
+                job.CreatedOnDate = DateTime.UtcNow;
                 // the modified date is the same as the creation date
-                item.LastModifiedOnDate = DateTime.UtcNow;
+                job.LastModifiedOnDate = DateTime.UtcNow;
                 
                 // submit the item for creation
-                ItemManager.Instance.CreateItem(item);
+                ItemManager.Instance.CreateItem(job);
             }
             else // load an existing item
             {
-                var existingItem = ItemManager.Instance.GetItem(item.ItemId, item.ModuleId);                
+                var existingItem = ItemManager.Instance.GetItem(job.ItemId, job.ModuleId);                
                 // item = ItemManager.Instance.GetItem(item.ItemId, item.ModuleId);
            
                 // These fields will have been when this record was created...
@@ -103,43 +103,47 @@ namespace Dnn.Modules.DnnJobBoard.Controllers
                 // PostingDate = DateTime.UtcNow;
 
                 // the module id to allow filtering data by module instance
-                existingItem.ModuleId = item.ModuleId;
+                existingItem.ModuleId = job.ModuleId;
                 // optional in-house generated for the posting
-                existingItem.PostingNumber = item.PostingNumber;
+                existingItem.PostingNumber = job.PostingNumber;
                 // when was the job posted (as in, by the company, not to the database)
-                existingItem.PostingDate = item.PostingDate;
+                existingItem.PostingDate = job.PostingDate;
+
                 // when is the job posting closed 
-                existingItem.PostingCloseDate = item.PostingCloseDate;
+                if (job.PostingCloseDate != null && job.PostingCloseDate < DateTime.Now.AddYears(-200))
+                {
+                    existingItem.PostingCloseDate = job.PostingCloseDate;
+                } 
                 // job title
-                existingItem.JobTitle = item.JobTitle;
+                existingItem.JobTitle = job.JobTitle;
                 // job summary
-                existingItem.JobSummary = item.JobSummary;
+                existingItem.JobSummary = job.JobSummary;
                 // terms of the employment such a full time vs. part time
-                existingItem.EmploymentTerm = item.EmploymentTerm;
+                existingItem.EmploymentTerm = job.EmploymentTerm;
                 // the geographical region where the job is located
-                existingItem.Region = item.Region;
+                existingItem.Region = job.Region;
                 // pay rate for the job
-                existingItem.RateOfPay = item.RateOfPay;
+                existingItem.RateOfPay = job.RateOfPay;
                 // benefits such as an outline of health plans or vacation terms and the like
-                existingItem.Benefits = item.Benefits;
+                existingItem.Benefits = job.Benefits;
                 // required qualifications for the job
-                existingItem.RequiredQualifications = item.RequiredQualifications;
+                existingItem.RequiredQualifications = job.RequiredQualifications;
                 // required experience for the job
-                existingItem.RequiredExperience = item.RequiredExperience;
+                existingItem.RequiredExperience = job.RequiredExperience;
                 // shift information, such as 'M-F', '4 days on 3 days off', etc.
-                existingItem.ShiftInfo = item.ShiftInfo;
+                existingItem.ShiftInfo = job.ShiftInfo;
                 // the working hours such as 'weekly rotation', 'on call', '9am-5pm;
-                existingItem.WorkHours = item.WorkHours;
+                existingItem.WorkHours = job.WorkHours;
                 // the office where the job is located
-                existingItem.Office = item.Office;
+                existingItem.Office = job.Office;
                 // department, if applicable, for this position
-                existingItem.Department = item.Department;
+                existingItem.Department = job.Department;
                 // affiliation such as a union or other form of segmentation used by the employer
-                existingItem.Affiliation = item.Affiliation;
+                existingItem.Affiliation = job.Affiliation;
                 // any additional information pertaining to the job
-                existingItem.AdditionalInfo = item.AdditionalInfo;
+                existingItem.AdditionalInfo = job.AdditionalInfo;
                 // number of job openings               
-                existingItem.NumberOfOpenings = item.NumberOfOpenings;
+                existingItem.NumberOfOpenings = job.NumberOfOpenings;
                 // update the last modified user id
                 existingItem.LastModifiedByUserId = User.UserID;
                 // update the last modified date
