@@ -1,69 +1,67 @@
 ﻿@model IEnumerable<Dnn.Modules.DnnJobBoard.Models.Item>
 
     @using DotNetNuke.Web.Mvc.Helpers
-
-    @using DotNetNuke.Web.Client.ClientResourceManagement
-    @{
-        ClientResourceManager.RegisterStyleSheet(Dnn.DnnPage, "~/DesktopModules/MVC/DnnJobBoard/css/innojobboard.css");
-    }	
-	
-    @using DotNetNuke.Web.Client.ClientResourceManagement
-    @{
-        // here I check the module context to know if the module is editable or not
-        // fix required, doesn't check superusers properly --- Dnn.ModuleContext.IsSuperUser isn't exposed in MVC (only SPA token)       
-        // var hasAdminRights = (this.User.IsInRole("Administrators") || this.User.IsInRole("SuperUsers"));
-        //var hasAdminRights = this.User.IsInRole("Administrators");
-        //if (hasAdminRights)
-        //{
-            ClientResourceManager.RegisterStyleSheet(Dnn.DnnPage, "~/DesktopModules/MVC/DnnJobBoard/css/innojobboard-theme.css");
-        //}
-        //else
-        //{
-        //   ClientResourceManager.RegisterStyleSheet(Dnn.DnnPage, "~/DesktopModules/MVC/INNO_Careers/css/innojobboard-application.css");
-        //}
-    }
-
-
+    @using Dnn.Modules.DnnJobBoard.Models
 
     <div id="job-list" class="row">
         <div class="col-sm-3 col-sm-offset-1 col-sm-push-8">
-          
-            <div class="well inno-jb-listing-filter">
+
+
+
+
+
+		<div class="well inno-jb-listing-filter">
                 <h4>Filter by Job Type</h4>
                 <hr />
                 <div class="filter-checkbox-list">
-                   
-                        <div class="filter-group">
+                    <div class="filter-group">
+                        
+						
                             <input id="dnn_ctr598_View_cblJobTypeFilters_0" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$0" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$0\&#39;,\&#39;\&#39;)&#39;, 0)" value="Permanent Casual" />
                             <label for="dnn_ctr598_View_cblJobTypeFilters_0">Permanent Casual</label>
-                        </div>
-                       <div class="filter-group">
-                            <input id="dnn_ctr598_View_cblJobTypeFilters_1" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$1" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$1\&#39;,\&#39;\&#39;)&#39;, 0)" value="Permanent Full Time" />
+					</div>
+					<div class="filter-group">
+                            
+							
+							<input id="dnn_ctr598_View_cblJobTypeFilters_1" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$1" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$1\&#39;,\&#39;\&#39;)&#39;, 0)" value="Permanent Full Time" />
                             <label for="dnn_ctr598_View_cblJobTypeFilters_1">Permanent Full Time</label>
-                        </div>
-                       <div class="filter-group">
-                            <input id="dnn_ctr598_View_cblJobTypeFilters_2" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$2" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$2\&#39;,\&#39;\&#39;)&#39;, 0)" value="Permanent Part Time" />
+					</div>
+					<div class="filter-group">
+                            
+							
+							<input id="dnn_ctr598_View_cblJobTypeFilters_2" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$2" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$2\&#39;,\&#39;\&#39;)&#39;, 0)" value="Permanent Part Time" />
                             <label for="dnn_ctr598_View_cblJobTypeFilters_2">Permanent Part Time</label>
-                       </div>
-                       <div class="filter-group">
+					</div>
+					<div class="filter-group">
+					
+					
                             <input id="dnn_ctr598_View_cblJobTypeFilters_3" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$3" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$3\&#39;,\&#39;\&#39;)&#39;, 0)" value="Permanent Relief" />
                             <label for="dnn_ctr598_View_cblJobTypeFilters_3">Permanent Relief</label>
-                        </div>
-                       <div class="filter-group">
-                            <input id="dnn_ctr598_View_cblJobTypeFilters_4" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$4" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$4\&#39;,\&#39;\&#39;)&#39;, 0)" value="Temporary Full Time" />
+					</div>
+					<div class="filter-group">
+                         
+
+							<input id="dnn_ctr598_View_cblJobTypeFilters_4" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$4" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$4\&#39;,\&#39;\&#39;)&#39;, 0)" value="Temporary Full Time" />
                             <label for="dnn_ctr598_View_cblJobTypeFilters_4">Temporary Full Time</label>
-                       </div>
-                       <div class="filter-group">
-                            <input id="dnn_ctr598_View_cblJobTypeFilters_5" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$5" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$5\&#39;,\&#39;\&#39;)&#39;, 0)" value="Temporary Part Time" />
+					</div>
+					<div class="filter-group">
+					
+					
+							<input id="dnn_ctr598_View_cblJobTypeFilters_5" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$5" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$5\&#39;,\&#39;\&#39;)&#39;, 0)" value="Temporary Part Time" />
                             <label for="dnn_ctr598_View_cblJobTypeFilters_5">Temporary Part Time</label>
-                        </div>
-                       <div class="filter-group">
-                            <input id="dnn_ctr598_View_cblJobTypeFilters_6" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$6" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$6\&#39;,\&#39;\&#39;)&#39;, 0)" value="Temporary Relief" />
+					</div>
+                    <div>
+							
+							
+							<input id="dnn_ctr598_View_cblJobTypeFilters_6" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$6" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$6\&#39;,\&#39;\&#39;)&#39;, 0)" value="Temporary Relief" />
                             <label for="dnn_ctr598_View_cblJobTypeFilters_6">Temporary Relief</label>
-                       </div>
+					</div>
                     
-                  
-                   
+					
+					
+					
+					
+					
                 </div>
             </div>
         </div>
@@ -83,11 +81,13 @@
                         <div class="panel-heading">
                             <h2 class="jobTitle h2">@item.JobTitle</h2>
                            
-                            <h5>@item.PostingDate.ToString("MMMM d, yyyy")</h5>
+                            <h5>@item.PostingDate.ToString(@Dnn.LocalizeString("StandardDateFormat"))</h5>
                             @if (Dnn.ModuleContext.IsEditable)
                             {
-                                <button type="button" class="btn btn-info"><a href="@Url.Action("Edit", "Item", new { ctl = "Edit", itemId = item.ItemId })">@Dnn.LocalizeString("EditItem")</a></button>
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal"><a href="@Url.Action("Delete", "Item", new { itemId = item.ItemId })">@Dnn.LocalizeString("DeleteItem")</a></button>
+                                <button type="button" class="btn btn-info"><a href="@Url.Action("Edit", "Item", new { ctl = "Edit", itemId = item.ItemId })">@Dnn.LocalizeString("EditItem")</a></button>                                
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+                                    <a href="javascript:confirmDelete(@item.ItemId)">@Dnn.LocalizeString("DeleteItem")</a>
+                                </button>
                             }
                         </div>
 
@@ -96,7 +96,8 @@
                             <ul class="job-details-list">
                                 <li><strong>Job Type:</strong> @item.EmploymentTerm</li>
                                 <li><strong>Posting ID:</strong> @item.PostingNumber</li>
-                                <li><strong>Closing Date:</strong> @item.PostingCloseDate</li>
+                                <li><strong>Posting Date:</strong>@item.PostingDate.ToString(Dnn.LocalizeString("StandardDateFormat"))</li>
+                                <li><strong>Closing Date:</strong>@(item.PostingCloseDate.HasValue ? item.PostingCloseDate.Value.ToString(Dnn.LocalizeString("StandardDateFormat")) : Dnn.LocalizeString("NoCloseDate"))                                
                                 <li><strong>Location:</strong> <span class="location">@item.Region</span></li>
                                 <li><strong>Compensation:</strong> @item.RateOfPay</li>
                                 <li><strong>Benefits:</strong> @item.Benefits</li>
@@ -111,5 +112,3 @@
                     }
                 </div>
             }
-
-         

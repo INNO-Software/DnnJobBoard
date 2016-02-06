@@ -1,4 +1,12 @@
-﻿<div id="mvcContainer-@Dnn.ActiveModule.ModuleID">
+﻿<div id="viewroot">
+    @RenderSection("ViewRoot", required: false)
+</div>
+
+<div id="scripts">
+    @RenderSection("ViewScripts", required: false)    
+</div>
+
+<div id="mvcContainer-@Dnn.ActiveModule.ModuleID">
     @RenderBody()
 </div>
 
