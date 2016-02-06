@@ -1,12 +1,6 @@
 ﻿@model Dnn.Modules.DnnJobBoard.Models.Item
-
 @using DotNetNuke.Web.Mvc.Helpers
 
-@using DotNetNuke.Web.Client.ClientResourceManagement
-@{
-    ClientResourceManager.RegisterStyleSheet(Dnn.DnnPage, "~/DesktopModules/MVC/DnnJobBoard/css/innojobboard.css");
-    ClientResourceManager.RegisterStyleSheet(Dnn.DnnPage, "~/DesktopModules/MVC/DnnJobBoard/css/innojobboard-theme.css");
-}
 
 <div id="Item-@Dnn.ModuleContext.ModuleId">
     <div class="row">
@@ -48,52 +42,47 @@
                 <div class="form-group">
 
                     <label class="h3" for="jobAdditionalInfo">@Dnn.LocalizeString("lblAdditionalInfo")</label>
-                    @Html.TextAreaFor(m => Model.AdditionalInfo, new { id = "jobAdditionalInfo", @class = "form-control input-lg", rows = "5" })
+                    @Html.TextAreaFor(m => Model.AdditionalInfo, new { id = "jobAdditionalInfo", @class = "form-control input-lg", @rows = "15" })
 
                 </div>
 
 
 
 
-                <div class="form-group">
-
-                    <label class="h3" for="jobBenefits">@Dnn.LocalizeString("lblBenefits")</label>
-                    @Html.TextAreaFor(m => Model.Benefits, new { id = "jobBenefits", @class = "form-control input-lg", rows = "5" })
-
-                </div>
+             
 
                 <div class="form-group">
 
                     <label class="h3" for="jobRequiredQualifications">@Dnn.LocalizeString("lblRequiredQualifications")</label>
-                    @Html.TextAreaFor(m => Model.RequiredQualifications, new { id = "jobRequiredQualifications", @class = "form-control input-lg", rows = "5" })
+                    @Html.TextAreaFor(m => Model.RequiredQualifications, new { id = "jobRequiredQualifications", @class = "form-control input-lg", @rows = "5" })
 
                 </div>
 
                 <div class="form-group">
 
                     <label class="h3" for="jobRequiredExperience">@Dnn.LocalizeString("lblRequiredExperience")</label>
-                    @Html.TextAreaFor(m => Model.RequiredExperience, new { id = "jobRequiredExperience", @class = "form-control input-lg", rows = "5" })
+                    @Html.TextAreaFor(m => Model.RequiredExperience, new { id = "jobRequiredExperience", @class = "form-control input-lg", @rows = "5" })
                 </div>
 
-                <div class="form-group">
-
-
-                    <label class="h3" for="jobShiftInfo">@Dnn.LocalizeString("lblShiftInfo")</label>
-                    @Html.TextAreaFor(m => Model.ShiftInfo, new { id = "jobShiftInfo", @class = "form-control input-lg", rows = "5" })
-
-                </div>
+               
 
 
 
                 <div class="form-group">
-                    <label class="h3">Status - needs to be wired up</label>
+                    <label class="h3" id="lblJobStatus" for="ddlJobStatus">@Dnn.LocalizeString("lblJobStatus")</label>                    
+                    @Html.DropDownListFor(m => m.Status, new SelectList(@ViewBag.JobStatues, "StatusId", "Value"))
+                    
+                    <!--
                     <select class="form-control">
                         <option>--</option>
                         <option>Published - The job posting is live and people can apply</option>
                         <option>Filled - The position has been filled people can't apply</option>
                         <option>Draft - The posting is hidden because I'm still working on it</option>
                     </select>
+                        -->
+
                 </div>
+
             </div>
         </div>
         <div class="col-sm-4 col-sm-offset-1">
@@ -108,45 +97,45 @@
                             @Html.TextBoxFor(m => Model.PostingNumber, new { id = "jobPostingNumber", @class = "form-control" })
                         </div>
                         <div class="form-group">
-                            <label class="control-label" for="careersCustomDetail2">Location:</label>
-                            <input type="text" id="careersCustomDetail2" value="Vancouver, BC" class="form-control" />
+                            <label class="control-label" for="lblRegion">@Dnn.LocalizeString("lblRegion")</label>
+                            @Html.TextBoxFor(m => Model.Region, new { id = "lblRegion", @class = "form-control" })
                         </div>
-                        <div class="form-group">
-                            <label class="control-label" for="careersCustomDetail3">Compensation:</label>
-                            <input type="text" id="careersCustomDetail3" value="$36,000/year" class="form-control" />
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="careersCustomDetail4">Benefits:</label>
-                            <input type="text" id="careersCustomDetail4" value="Dental and vision" class="form-control" />
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="careersCustomDetail5">Hours:</label>
-                            <input type="text" id="careersCustomDetail5" value="Some value" class="form-control" />
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="jobEmploymentTerm">@Dnn.LocalizeString("lblEmploymentTerms")</label>
-                            @Html.TextBoxFor(m => Model.EmploymentTerm, new { id = "jobEmploymentTerm", @class = "form-control" })
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="jobRegion">@Dnn.LocalizeString("lblRegion")</label>
-                            @Html.TextBoxFor(m => Model.Region, new { id = "jobRegion", @class = "form-control" })
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="jobRateOfPay">@Dnn.LocalizeString("lblRateOfPay")</label>
-                            @Html.TextBoxFor(m => Model.RateOfPay, new { id = "jobRateOfPay", @class = "form-control" })
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="jobWorkHours">@Dnn.LocalizeString("lblWorkHours")</label>
-                            @Html.TextBoxFor(m => Model.WorkHours, new { id = "jobWorkHours", @class = "form-control" })
-                        </div>
-                        <div class="form-group">
+						   <div class="form-group">
                             <label class="control-label" for="jobOffice">@Dnn.LocalizeString("lblOffice")</label>
                             @Html.TextBoxFor(m => Model.Office, new { id = "jobOffice", @class = "form-control" })
                         </div>
-                        <div class="form-group">
+                      <div class="form-group">
                             <label class="control-label" for="jobDepartment">@Dnn.LocalizeString("lblDepartment")</label>
                             @Html.TextBoxFor(m => Model.Department, new { id = "jobDepartment", @class = "form-control" })
+                        </div>					
+
+		 <div class="form-group">
+                            <label class="control-label" for="ShiftInfo">@Dnn.LocalizeString("lblShiftInfo")</label>
+                            @Html.TextBoxFor(m => Model.ShiftInfo, new { id = "ShiftInfo", @class = "form-control" })
+                        </div>						
+						  <div class="form-group">
+                            <label class="control-label" for="lblWorkHours">@Dnn.LocalizeString("lblWorkHours")</label>
+                            @Html.TextBoxFor(m => Model.WorkHours, new { id = "lblWorkHours", @class = "form-control" })
+                        </div>	
+                        <div class="form-group">
+                            <label class="control-label" for="lblBenefits">@Dnn.LocalizeString("lblBenefits")</label>
+                            @Html.TextBoxFor(m => Model.Benefits, new { id = "lblBenefits", @class = "form-control" })
                         </div>
+                      
+                        <div class="form-group">
+                            <label class="control-label" for="jobEmploymentTerm">@Dnn.LocalizeString("lblEmploymentTerms")</label>
+                            @Html.TextBoxFor(m => Model.EmploymentTerm, new { id = "jobEmploymentTerm", @class = "form-control" })
+                        </div>						
+                        <div class="form-group">
+                            <label class="control-label" for="lblRateOfPay">@Dnn.LocalizeString("lblRateOfPay")</label>
+                            @Html.TextBoxFor(m => Model.RateOfPay, new { id = "lblRateOfPay", @class = "form-control" })
+                        </div>
+
+
+
+                      
+                     
+  
                         <div class="form-group">
                             <label class="control-label" for="jobAffiliation">@Dnn.LocalizeString("lblJobAffiliation")</label>
                             @Html.TextBoxFor(m => Model.Affiliation, new { id = "jobAffiliation", @class = "form-control" })
@@ -155,6 +144,8 @@
                             <label class="control-label" for="numberOfOpenings">@Dnn.LocalizeString("lblNumberOfOpenings")</label>
                             @Html.TextBoxFor(m => Model.NumberOfOpenings, new { id = "numberOfOpenings", @class = "form-control" })
                         </div>
+						
+				
 
                         @Html.HiddenFor(m => m.ModuleId)
 
@@ -173,30 +164,14 @@
               
 
 			  <small>or 
-                <a href="@Url.Action("Index")" class="btn btn-link">@Dnn.LocalizeString("Cancel")</a>
+                <a href="@Url.Action("Index")" class="btn btn-link">@Dnn.LocalizeString("Cancel")</a></small>
 
-                <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#myModal">
-                    <a href="javascript:confirmDelete(m => Model.ItemId)">&times; @Dnn.LocalizeString("DeleteItem")</a>
-                </button></small>
+            
+                    <a href="javascript:confirmDelete(m => Model.ItemId)" class="btn btn-danger pull-right">&times; @Dnn.LocalizeString("DeleteItem")</a>
+                
             </div>
         </div>
     </div>
 
 </div>
 
-
-
-@section ViewRoot
-            {
-    @{ Html.RenderPartial("/DesktopModules/MVC/DnnJobBoard/Views/Shared/_RenderJobs.Modal.cshtml"); }
-}
-
-@section ViewScripts
-            {
-    @using DotNetNuke.Web.Client.ClientResourceManagement
-    @{
-        ClientResourceManager.RegisterScript(Dnn.DnnPage, "~/bundles/jqueryval");
-        ClientResourceManager.RegisterScript(Dnn.DnnPage, "~/DesktopModules/MVC/DnnJobBoard/Views/Shared/_RenderJobs.js.cshtml");
-
-    }
-}

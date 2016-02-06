@@ -11,7 +11,7 @@
 
 
 		<div class="well inno-jb-listing-filter">
-                <h4>Filter by Job Type</h4>
+                <h5>Filter by Job Type</h5>
                 <hr />
                 <div class="filter-checkbox-list">
                     <div class="filter-group">
@@ -50,7 +50,7 @@
 							<input id="dnn_ctr598_View_cblJobTypeFilters_5" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$5" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$5\&#39;,\&#39;\&#39;)&#39;, 0)" value="Temporary Part Time" />
                             <label for="dnn_ctr598_View_cblJobTypeFilters_5">Temporary Part Time</label>
 					</div>
-                    <div>
+                    <div class="filter-group">
 							
 							
 							<input id="dnn_ctr598_View_cblJobTypeFilters_6" type="checkbox" name="dnn$ctr598$View$cblJobTypeFilters$6" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;dnn$ctr598$View$cblJobTypeFilters$6\&#39;,\&#39;\&#39;)&#39;, 0)" value="Temporary Relief" />
@@ -81,26 +81,50 @@
                         <div class="panel-heading">
                             <h2 class="jobTitle h2">@item.JobTitle</h2>
                            
-                            <h5>@item.PostingDate.ToString(@Dnn.LocalizeString("StandardDateFormat"))</h5>
+                            <h6>Posted on: @item.PostingDate.ToString(@Dnn.LocalizeString("StandardDateFormat"))</h6>
                             @if (Dnn.ModuleContext.IsEditable)
                             {
-                                <button type="button" class="btn btn-info"><a href="@Url.Action("Edit", "Item", new { ctl = "Edit", itemId = item.ItemId })">@Dnn.LocalizeString("EditItem")</a></button>                                
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
-                                    <a href="javascript:confirmDelete(@item.ItemId)">@Dnn.LocalizeString("DeleteItem")</a>
-                                </button>
+                                <a href="@Url.Action("Edit", "Item", new { ctl = "Edit", itemId = item.ItemId })" class="btn btn-info">@Dnn.LocalizeString("EditItem")</a>                                
+                                
+                                    <a href="javascript:confirmDelete(@item.ItemId)" class="btn btn-danger" >@Dnn.LocalizeString("DeleteItem")</a>
+                              
                             }
                         </div>
 
                         <div class="panel-body">
+						 @if (item.JobSummary != null) {  
                             <p class="lead">@item.JobSummary</p>
+							}
+							else {
+							}
                             <ul class="job-details-list">
-                                <li><strong>Job Type:</strong> @item.EmploymentTerm</li>
-                                <li><strong>Posting ID:</strong> @item.PostingNumber</li>
-                                <li><strong>Posting Date:</strong>@item.PostingDate.ToString(Dnn.LocalizeString("StandardDateFormat"))</li>
-                                <li><strong>Closing Date:</strong>@(item.PostingCloseDate.HasValue ? item.PostingCloseDate.Value.ToString(Dnn.LocalizeString("StandardDateFormat")) : Dnn.LocalizeString("NoCloseDate"))                                
-                                <li><strong>Location:</strong> <span class="location">@item.Region</span></li>
-                                <li><strong>Compensation:</strong> @item.RateOfPay</li>
-                                <li><strong>Benefits:</strong> @item.Benefits</li>
+							<li><label>Job Posting Close Date:</label> @(item.PostingCloseDate.HasValue ? item.PostingCloseDate.Value.ToString(Dnn.LocalizeString("StandardDateFormat")) : Dnn.LocalizeString("NoCloseDate")) </li>
+							@if (item.EmploymentTerm != null) {
+                                <li><label>Job Type:</label> @item.EmploymentTerm</li>
+							}
+							else {
+							}
+							@if (item.PostingNumber != null) {
+                                <li><label>Posting ID:</label> @item.PostingNumber</li>
+								}
+							else {
+							}
+                                
+                               @if (item.Region != null) {                               
+                                <li><label>Location:</label> @item.Region</li>
+								}
+							else {
+							}
+							@if (item.RateOfPay != null) {
+                                <li><label>Compensation:</label> @item.RateOfPay</li>
+								}
+							else {
+							}
+							@if (item.Benefits != null) {
+                                <li><label>Benefits:</label> @item.Benefits</li>
+								}
+							else {
+							}
                             </ul>
 
                             <p class="text-center"><a class="jobboard-view-details" href="@Url.Action("Details", "Item", new { ctl = "Details", itemId = item.ItemId })">@Dnn.LocalizeString("ViewItem") &raquo;</a></p>

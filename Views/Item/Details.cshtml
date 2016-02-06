@@ -1,27 +1,5 @@
 ﻿@model Dnn.Modules.DnnJobBoard.Models.Item
-
-    @using DotNetNuke.Web.Mvc.Helpers
-
-    @using DotNetNuke.Web.Client.ClientResourceManagement
-    @{
-        ClientResourceManager.RegisterStyleSheet(Dnn.DnnPage, "~/DesktopModules/MVC/DnnJobBoard/css/innojobboard.css");
-    }	
-	
-    @using DotNetNuke.Web.Client.ClientResourceManagement
-    @{
-        // here I check the module context to know if the module is editable or not
-        // fix required, doesn't check superusers properly --- Dnn.ModuleContext.IsSuperUser isn't exposed in MVC (only SPA token)       
-        // var hasAdminRights = (this.User.IsInRole("Administrators") || this.User.IsInRole("SuperUsers"));
-        //var hasAdminRights = this.User.IsInRole("Administrators");
-        //if (hasAdminRights)
-        //{
-            ClientResourceManager.RegisterStyleSheet(Dnn.DnnPage, "~/DesktopModules/MVC/DnnJobBoard/css/innojobboard-theme.css");
-        //}
-        //else
-        //{
-        //   ClientResourceManager.RegisterStyleSheet(Dnn.DnnPage, "~/DesktopModules/MVC/INNO_Careers/css/innojobboard-application.css");
-        //}
-    }
+@using DotNetNuke.Web.Mvc.Helpers
 
 <div id="Item-@Dnn.ModuleContext.ModuleId">
         <div class="row">
@@ -30,13 +8,15 @@
                 <h1>
                     @Html.DisplayTextFor(model => model.JobTitle)
 
-@if (Dnn.ModuleContext.IsEditable)
-{
-                    <button class="btn btn-info">&#9998; Edit</button>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">&times; Delete</button>
-}
-                               </h1>
-                <h5 class="text-uppercase">Posted @Html.DisplayTextFor(model => model.PostingDate)</h5>
+                    @if (Dnn.ModuleContext.IsEditable)
+                    {
+                        <a href="@Url.Action("Edit", "Item", new { ctl = "Edit", itemId = Model.ItemId })" class="btn btn-info">@Dnn.LocalizeString("EditItem")</a>                        
+                        
+                            <a href="javascript:confirmDelete(@Model.ItemId)"  class="btn btn-danger">@Dnn.LocalizeString("DeleteItem")</a>
+                       
+                    }
+                </h1>
+                <h6>Posted on: @Html.DisplayTextFor(model => model.PostingDate)</h6>
             </div>
         </div>
         <div class="row">
@@ -45,15 +25,27 @@
                     <p class="lead">@Html.DisplayTextFor(model => model.JobSummary)</p>
                     
                 <p>@Html.DisplayTextFor(model => model.AdditionalInfo)</p>
+				<hr />
                 </div>
+				@if(!string.IsNullOrEmpty(Model.RequiredExperience)) {
                 <div class="inno-careers-experience">
                     <h4>@Dnn.LocalizeString("lblRequiredExperience")</h4>
                    <p>@Html.DisplayTextFor(model => model.RequiredExperience)</p>
+				   <hr />
                 </div>
+				}
+				else {
+				}
+				@if(!string.IsNullOrEmpty(Model.RequiredQualifications)) {
                 <div class="inno-careers-qualifications">
                     <h4>@Dnn.LocalizeString("lblRequiredQualifications")</h4>
                     <p>@Html.DisplayTextFor(model => model.RequiredQualifications)</p>
+					
                 </div>
+				}
+				else {
+					// show nothing
+					}
             </div>
             <div class="col-sm-4 col-sm-offset-1 inno-jb-detail-sidebar">
                 <div class="job-details panel panel-default">
@@ -62,63 +54,143 @@
                     </div>
                     <div class="panel-body">
                         <fieldset>
-                            <div class="fieldset-row">
-                               <label for="jobOffice">@Dnn.LocalizeString("lblOffice"):</label>
-                                <span>@Html.DisplayTextFor(model => model.Office)</span>
-                            </div>
-                            <div class="fieldset-row">
-                               <label for="jobPostingNumber">@Dnn.LocalizeString("lblPostingNumber"):</label>
-                                <span>@Html.DisplayTextFor(model => model.PostingNumber)</span>
-                            </div>
-                            <div class="fieldset-row">
+						
+						<div class="fieldset-row">
                                 <label for="jobPostingCloseDate">@Dnn.LocalizeString("lblPostingCloseDate"):</label>
                                 <span>@Html.DisplayTextFor(model => model.PostingCloseDate)</span>
                             </div>
-                            <div class="fieldset-row">
-                               <label for="jobShiftInfo">@Dnn.LocalizeString("lblShiftInfo"):</label>
-                                <span>@Html.DisplayTextFor(model => model.ShiftInfo)</span>
-                            </div>
-                            <div class="fieldset-row">
-                                <label for="jobWorkHours">@Dnn.LocalizeString("lblWorkHours"):</label>
-                               <span>@Html.DisplayTextFor(model => model.WorkHours)</span>
-                            </div>
-                            <div class="fieldset-row">
-                               <label for="jobBenefits">@Dnn.LocalizeString("lblBenefits"):</label>
-                                <span>@Html.DisplayTextFor(model => model.Benefits)</span>
-                            </div>
 							
+						@if(!string.IsNullOrEmpty(Model.PostingNumber)) {
 							<div class="fieldset-row">
-							<label for="jobEmploymentTerm">@Dnn.LocalizeString("lblEmploymentTerms"):</label>
-								<span>@Html.DisplayTextFor(model => model.EmploymentTerm)</span>
-							</div>
-							
-								<div class="fieldset-row">
+                               <label for="jobPostingNumber">@Dnn.LocalizeString("lblPostingNumber"):</label>
+                                <span>@Html.DisplayTextFor(model => model.PostingNumber)</span>
+                            </div>
+						}
+						else
+						{
+							// show nothing
+						}
+		
+					@if(!string.IsNullOrEmpty(Model.Region)) {
+							<div class="fieldset-row">
 									<label for="jobRegion">@Dnn.LocalizeString("lblRegion"):</label>
 									<span>@Html.DisplayTextFor(model => model.Region)</span>
 							</div>
+						}
+						else
+						{
+							// show nothing
+						}							
 							
+				@if(!string.IsNullOrEmpty(Model.Region)) {
+							<div class="fieldset-row">
+                               <label for="jobOffice">@Dnn.LocalizeString("lblOffice"):</label>
+                                <span>@Html.DisplayTextFor(model => model.Office)</span>
+                            </div>
+						}
+						else
+						{
+							// show nothing
+						}	
+															
+				@if(!string.IsNullOrEmpty(Model.Department)) {
+ 							<div class="fieldset-row">
+								<label for="jobDepartment">@Dnn.LocalizeString("lblDepartment"):</label>
+               					<span>@Html.DisplayTextFor(model => model.Department)</span>
+							</div>
+						}
+						else
+						{
+							// show nothing
+						}	                            
+ 
+ 				@if(!string.IsNullOrEmpty(Model.ShiftInfo)) {
+ 							<div class="fieldset-row">
+                               <label for="jobShiftInfo">@Dnn.LocalizeString("lblShiftInfo"):</label>
+                                <span>@Html.DisplayTextFor(model => model.ShiftInfo)</span>
+                            </div>
+						}
+						else
+						{
+							// show nothing
+						}                           
+ 
+ 				@if(!string.IsNullOrEmpty(Model.WorkHours)) {
+ 							<div class="fieldset-row">
+                                <label for="jobWorkHours">@Dnn.LocalizeString("lblWorkHours"):</label>
+                               <span>@Html.DisplayTextFor(model => model.WorkHours)</span>
+                            </div>
+						}
+						else
+						{
+							// show nothing
+						}                             
+                            
+ 						@if(!string.IsNullOrEmpty(Model.Benefits)) {
+ 							<div class="fieldset-row">
+                               <label for="jobBenefits">@Dnn.LocalizeString("lblBenefits"):</label>
+                                <span>@Html.DisplayTextFor(model => model.Benefits)</span>
+                            </div>
+						}
+						else
+						{
+							// show nothing
+						}                               
+
+ 						@if(!string.IsNullOrEmpty(Model.EmploymentTerm)) {
+ 							<div class="fieldset-row">
+							<label for="jobEmploymentTerm">@Dnn.LocalizeString("lblEmploymentTerms"):</label>
+								<span>@Html.DisplayTextFor(model => model.EmploymentTerm)</span>
+							</div>
+						}
+						else
+						{
+							// show nothing
+						}                              
 							
-								<div class="fieldset-row">
-							<label for="jobRateOfPay">@Dnn.LocalizeString("lblRateOfPay"):</label>
-							<span>@Html.DisplayTextFor(model => model.RateOfPay)</span>
+ 						@if(!string.IsNullOrEmpty(Model.RateOfPay)) {
+							<div class="fieldset-row">
+								<label for="jobRateOfPay">@Dnn.LocalizeString("lblRateOfPay"):</label>
+								<span>@Html.DisplayTextFor(model => model.RateOfPay)</span>
 							</div>
 							
+						}
+						else
+						{
+							// show nothing
+						}   
 							
-								<div class="fieldset-row">
-							<label for="jobDepartment">@Dnn.LocalizeString("lblDepartment"):</label>
-               <span>@Html.DisplayTextFor(model => model.Department)</span>
-							</div>
-							
-							
-								<div class="fieldset-row">
+ 						@if(!string.IsNullOrEmpty(Model.Affiliation)) {
+							<div class="fieldset-row">
 							   <label for="jobAffiliation">@Dnn.LocalizeString("lblJobAffiliation"):</label>
-                    <span>@Html.DisplayTextFor(model => model.Affiliation)</span>
+                    			<span>@Html.DisplayTextFor(model => model.Affiliation)</span>
 							</div>
-							
+						}
+						else
+						{
+							// show nothing
+						}   
+													
+ 						@if(Model.NumberOfOpenings > 0) {
 							<div class="fieldset-row">
 							<label for="numberOfOpenings">@Dnn.LocalizeString("lblNumberOfOpenings"):</label>
                <span>@Html.DisplayTextFor(model => model.NumberOfOpenings)</span>
-							</div>
+							</div>							
+								
+						}
+						else
+						{
+							// show nothing
+						}   
+														
+							
+								
+							
+							
+							
+								
+							
+
 							
                         </fieldset>
                     </div>
